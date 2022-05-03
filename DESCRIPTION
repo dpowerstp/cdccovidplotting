@@ -1,0 +1,18 @@
+Package: cdccovidplotting
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person("Dan", "Powers", , "danielp@takomparkmd.gov", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: Functions for processing and visualizing CDC COVID-19 community level data.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Imports: 
+    dplyr,
+    glue,
+    magrittr,
+    plotly,
+    plotlywrappers,
+    purrr
