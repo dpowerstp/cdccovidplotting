@@ -30,7 +30,7 @@ plot_commlevels <- function(countydf, vareval, subtitle, basechng){
                                   dplyr::arrange(date_updated),
                                 x = ~ date_updated,
                                 y = vareval,
-                                text = ~ glue::glue(paste0("Change since last week: {", basechng, "}
+                                text = ~ glue::glue(paste0("Change since last week: {round(", basechng, ", 1)}
                          Percent change since last week: {", basepct, " %>% round(., 1)}%")),
                                 showlegend = F,
                                 type = "scatter",
