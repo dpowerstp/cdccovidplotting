@@ -125,7 +125,7 @@ lines_approp <- function(baseplot, varstring, countydf, .covidvar = "covid_cases
                             varstring == "covid_inpatient_bed_utilization" ~ 10)
 
       returnplot <- baseplot %>%
-        plotlywrappers::dotted_line(df = countydf, x_col = "date_updated", line_val = var_high, gluetext = "High", .showarrow = F)
+        plotlywrappers::dotted_line(df = countydf, x_col = "date_updated", line_val = var_high, gluetext = "High", .showarrow = T)
 
     }
 
