@@ -8,8 +8,8 @@ lines_approp(
   baseplot,
   varstring,
   countydf,
-  .covidvar = covid_cases_per_100k,
-  .countycol = county
+  .covidvar = "covid_cases_per_100k",
+  .countycol = "county"
 )
 }
 \arguments{
@@ -19,9 +19,9 @@ lines_approp(
 
 \item{countydf}{CDC community-level dataframe filtered to one county}
 
-\item{.covidvar}{Data-masked name of variable associated with covid-cases per 100,000 residents; default covid_cases_per_100k}
+\item{.covidvar}{String name of variable associated with covid-cases per 100,000 residents; default covid_cases_per_100k}
 
-\item{.countycol}{Data-masked name of variable associated with filtered county; default county}
+\item{.countycol}{String name of variable associated with filtered county; default county}
 }
 \value{
 plotly plot with threshold dotted lines added to it for supplied variable

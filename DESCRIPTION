@@ -15,4 +15,5 @@ Imports:
     magrittr,
     plotly,
     plotlywrappers,
-    purrr
+    purrr,
+    rlang

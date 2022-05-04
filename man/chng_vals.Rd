@@ -9,7 +9,7 @@ chng_vals(
   colname = c("covid_hospital_admissions_per_100k", "covid_inpatient_bed_utilization",
     "covid_cases_per_100k"),
   chngstr = c("chng_hospadmit", "chng_inpatient", "chng_covid"),
-  .countycol = county,
+  .countycol = "county",
   .dateformat = date_updated
 )
 }
@@ -20,7 +20,7 @@ chng_vals(
 
 \item{chngstr}{Name or vector of names of new column as string. Default c("chng_hospadmit", "chng_inpatient", "chng_covid")}
 
-\item{.countycol}{Data-masked name of county column; default count}
+\item{.countycol}{String name of county column; default count}
 
 \item{.dateformat}{Data-masked name of date column; default date_updated}
 }

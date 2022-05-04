@@ -33,7 +33,7 @@ format_date <- function(df, datecol = date_updated){
 #' @param df CDC community level dataframe processed by format_date
 #' @param colname Name or vector of names of columns to calculate change in previous week for as strings. Default c("covid_hospital_admissions_per_100k", "covid_inpatient_bed_utilization", "covid_cases_per_100k")
 #' @param chngstr Name or vector of names of new column as string. Default c("chng_hospadmit", "chng_inpatient", "chng_covid")
-#' @param .countycol Data-masked name of county column; default count
+#' @param .countycol String name of county column; default count
 #' @param .dateformat Data-masked name of date column; default date_updated
 #'
 #' @return Dataframe with change in
@@ -50,11 +50,11 @@ format_date <- function(df, datecol = date_updated){
 #' dfthree <- cdccovidplotting::chng_vals(df)
 #'
 #' }
-chng_vals <- function(df, colname = c("covid_hospital_admissions_per_100k", "covid_inpatient_bed_utilization", "covid_cases_per_100k"), chngstr = c("chng_hospadmit", "chng_inpatient", "chng_covid"), .countycol = county, .dateformat = date_updated){
+chng_vals <- function(df, colname = c("covid_hospital_admissions_per_100k", "covid_inpatient_bed_utilization", "covid_cases_per_100k"), chngstr = c("chng_hospadmit", "chng_inpatient", "chng_covid"), .countycol = "county", .dateformat = date_updated){
 
   sortdf <- df %>%
     dplyr::ungroup() %>%
-    dplyr::group_by({{.countycol}}) %>%
+    dplyr::group_by(!!dplyr::sym({{.countycol}})) %>%
     dplyr::arrange({{.dateformat}})
 
   if (length(chngstr) == 1){
@@ -74,8 +74,8 @@ chng_vals <- function(df, colname = c("covid_hospital_admissions_per_100k", "cov
       pct_chng <- paste0(.y, "_pct")
 
       outdf <<- outdf  %>%
-        dplyr::mutate(!!dplyr::sym(.y) := !!dplyr::sym(.x) - lag(!!dplyr::sym(.x)),
-                      !!dplyr::sym(pct_chng) := round(!!dplyr::sym(.y) * 100 / lag(!!dplyr::sym(.x)), 2))
+        dplyr::mutate(!!dplyr::sym(.y) := !!dplyr::sym(.x) - stats::lag(!!dplyr::sym(.x)),
+                      !!dplyr::sym(pct_chng) := round(!!dplyr::sym(.y) * 100 / stats::lag(!!dplyr::sym(.x)), 2))
 
     })
 

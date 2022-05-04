@@ -6,21 +6,21 @@
 \usage{
 subplots_keyvars(
   countydf,
-  varevals = c(~covid_cases_per_100k, ~covid_hospital_admissions_per_100k,
+  varevals = rlang::list2(~covid_cases_per_100k, ~covid_hospital_admissions_per_100k,
     ~covid_hospital_admissions_per_100k),
   subtitles = c("COVID cases\\nper 100k",
     "Percent of beds\\nfilled by\\nCOVID patients", "COVID hospital\\nadmits per\\n100k"),
   basechngs = c("chng_covid", "chng_inpatient", "chng_hospadmit"),
   countyfilt = NULL,
   subrows = 2,
-  .covidvar = covid_cases_per_100k,
-  .countycol = county
+  .covidvar = "covid_cases_per_100k",
+  .countycol = "county"
 )
 }
 \arguments{
 \item{countydf}{CDC community-level dataframe filtered to one county. Alternatively, can provide unfiltered dataframe with countyfilt set to county want to filter data to}
 
-\item{varevals}{Expression of variables plotting in y-axis. E.g., ~ covid_cases_per_100k. Default c(~ covid_cases_per_100k, ~ covid_hospital_admissions_per_100k, ~ covid_hospital_admissions_per_100k)}
+\item{varevals}{List2 of fomulas of variables plotting in y-axis. E.g., ~ covid_cases_per_100k. Default rlang::list2(~ covid_cases_per_100k, ~ covid_hospital_admissions_per_100k, ~ covid_hospital_admissions_per_100k)}
 
 \item{subtitles}{Titles of subplots. Default c("COVID cases\ per 100k", "Percent of beds filled by COVID patients", "COVID hospital admits per 100k")}
 
@@ -30,9 +30,9 @@ subplots_keyvars(
 
 \item{subrows}{Number of rows in subplot; default 2}
 
-\item{.covidvar}{Data-masked name of variable associated with covid-cases per 100,000 residents; default covid_cases_per_100k}
+\item{.covidvar}{String name of variable associated with covid-cases per 100,000 residents; default covid_cases_per_100k}
 
-\item{.countycol}{Data-masked name of variable associated with filtered county; default county}
+\item{.countycol}{String name of variable associated with filtered county; default county}
 }
 \value{
 Subplots of COVID-19 variables

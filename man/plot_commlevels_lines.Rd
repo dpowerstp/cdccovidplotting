@@ -10,8 +10,8 @@ plot_commlevels_lines(
   subtitle,
   basechng,
   countyfilt = NULL,
-  .covidvar = covid_cases_per_100k,
-  .countycol = county
+  .covidvar = "covid_cases_per_100k",
+  .countycol = "county"
 )
 }
 \arguments{
@@ -25,9 +25,9 @@ plot_commlevels_lines(
 
 \item{countyfilt}{String name of county to filter countydf to; default NULL, which assumes countydf is already filtered to one county. Performs grepl match with countyfilt so partial matches acceptable}
 
-\item{.covidvar}{Data-masked name of variable associated with covid-cases per 100,000 residents; default covid_cases_per_100k}
+\item{.covidvar}{String name of variable associated with covid-cases per 100,000 residents; default covid_cases_per_100k}
 
-\item{.countycol}{Data-masked name of variable associated with filtered county; default county}
+\item{.countycol}{String name of variable associated with filtered county; default county}
 }
 \value{
 Plot of CDC community-level COVID-19 data for one county with risk-threshold lines drawn
