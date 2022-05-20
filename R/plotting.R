@@ -116,7 +116,7 @@ lines_approp <- function(baseplot, varstring, countydf, .covidvar = "covid_cases
                             varstring == "covid_inpatient_bed_utilization" ~ 15)
 
       returnplot <- baseplot %>%
-        plotlywrappers::multi_line(df = countydf, x_col = "date_updated", yvec = c(var_med, var_high), c("Medium", "High"))
+        plotlywrappers::multi_line(df = countydf, x_col = "date_updated", yvec = c(var_med, var_high), c("Medium", "High"), .showarrow = T)
 
     }
 
