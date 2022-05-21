@@ -61,7 +61,7 @@ chng_vals <- function(df, colname = c("covid_hospital_admissions_per_100k", "cov
     pct_chng <- paste0(chngstr, "_pct")
 
     outdf <- sortdf %>%
-      dplyr::mutate(!!dplyr::sym(chngstr) := !!dplyr::sym(colname) - stats::lag(!!dplyr::sym(colname)),
+      dplyr::mutate(!!dplyr::sym(chngstr) := !!dplyr::sym(colname) - dplyr::lag(!!dplyr::sym(colname)),
                     !!dplyr::sym(pct_chng) := round(!!dplyr::sym(chngstr) * 100 / lag(!!dplyr::sym(colname)), 2))
   }
 
@@ -74,8 +74,8 @@ chng_vals <- function(df, colname = c("covid_hospital_admissions_per_100k", "cov
       pct_chng <- paste0(.y, "_pct")
 
       outdf <<- outdf  %>%
-        dplyr::mutate(!!dplyr::sym(.y) := !!dplyr::sym(.x) - stats::lag(!!dplyr::sym(.x)),
-                      !!dplyr::sym(pct_chng) := round(!!dplyr::sym(.y) * 100 / stats::lag(!!dplyr::sym(.x)), 2))
+        dplyr::mutate(!!dplyr::sym(.y) := !!dplyr::sym(.x) - dplyr::lag(!!dplyr::sym(.x)),
+                      !!dplyr::sym(pct_chng) := round(!!dplyr::sym(.y) * 100 / dplyr::lag(!!dplyr::sym(.x)), 2))
 
     })
 
